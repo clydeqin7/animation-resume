@@ -1,4 +1,53 @@
-var result =`
+/* 把code写入#code和style里 */
+function writeCSS(prefix, code, fn){
+    let codeDOM = document.querySelector("#code")
+    let n = 0
+    let strOld = ''
+    let id = setInterval(function(){
+    n += 1
+    strOld = prefix + code.substring(0, n)
+    codeDOM.innerHTML = Prism.highlight(strOld, Prism.languages.css) 
+    codeDOM.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
+    codeStyle.innerHTML = strOld
+    if(n > code.length){
+        window.clearInterval(id)
+        fn ** fn.call()
+    }
+    }, 0)
+}
+
+function writeMarkdown(prefix, code, fn){
+    console.log(code)
+    let codeDOM = document.querySelector("#paper > #content")
+    let n = 0
+    let strOld = ''
+    let id = setInterval(function(){
+    n += 1
+    strOld = prefix + code.substring(0, n)
+    codeDOM.innerHTML = strOld 
+    // codeDOM.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
+    // codeStyle.innerHTML = strOld
+    if(n > code.length){
+        window.clearInterval(id)
+        fn ** fn.call()
+    }
+    }, 0)
+}
+
+
+
+
+function createPaper(fn){
+    var paper = document.createElement('div')
+    paper.id = 'paper'
+    var md = document.createElement('pre')
+    md.id = 'content'
+    paper.appendChild(md)
+    document.body.appendChild(paper)
+    fn && fn.call()
+}
+
+var cssText =`
 /*
  * 你好，面试官！
  * 我是覃琪
@@ -18,7 +67,7 @@ html{
 
 #code{
     border: 1px solid red;
-    padding: 8px;
+    padding: 16px;
 }
 
 /* 接着给代码高亮 */
@@ -32,16 +81,42 @@ html{
     transform: rotate(360deg);
 }
 
-`
+/* OK，不玩了接下来正式介绍下自己 */
+/* 准备一张白纸 */
+#code{
+    width: 50%;
+    position: fixed;
+    height: 100%;
+    left: 0
+}
 
-var n = 0
-var strOld = ''
-var id = setInterval(function(){
-  n += 1
-  strOld = result.substring(0, n)
-  code.innerHTML = Prism.highlight(strOld, Prism.languages.css) 
-  codeStyle.innerHTML = strOld
-  if(n > result.length){
-      window.clearInterval(id)
-  }
-}, 30)
+#paper{
+    width: 50%;
+    position: fixed;
+    height: 100%;
+    left: 50%;
+    background-color: gray;
+    padding: 8px;
+}
+
+#content{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 8px;
+}
+`
+var mdText = `
+# 个人信息
+我叫覃琪
+初学前端半年
+
+# 作品
+`
+writeCSS('', cssText, ()=>{
+    createPaper(()=>{
+        writeMarkdown('', mdText, ()=>{
+
+        })
+    })
+})

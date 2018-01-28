@@ -1,3 +1,9 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}   
+
 #code .token.selector {
     color: black;
 }
@@ -10,3 +16,10 @@
 #code .token.function {
     color: black;
 }
+
+
+
+#code{
+    overflow: hidden;
+}
+
