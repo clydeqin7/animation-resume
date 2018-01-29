@@ -19,20 +19,26 @@
 
 #codeWrapper{
     padding: 16px;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 #code{
     padding: 16px;
+
 }
 
+#paper{
+    overflow: hidden;
+
+}
 .html.markdown-body{
-    box-sizing: content-box;
     width: 100%;
     height: 100%;
     background-color: white;
     padding: 32px;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-x: hidden; 
 }
 
 @keyframes breath{

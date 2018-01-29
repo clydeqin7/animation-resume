@@ -13,7 +13,7 @@ function writeCSS(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 50)
+    }, 0)
 }
 
 function writeMarkdown(prefix, code, fn){
@@ -30,7 +30,7 @@ function writeMarkdown(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 20)
+    }, 0)
 }
 
 function createMarkdown2HTML(fn){
@@ -82,11 +82,11 @@ html{
 #code .token.property{ color: #905; }
 #code .token.function { color: #DD4A68; }
 
-/* 加点3D效果 */
-
+/* 加个呼吸效果 */
 #code{
     animation: breath 2s infinite alternate-reverse;
 }
+
 /* OK，不玩了接下来正式介绍下自己 */
 /* 准备一张白纸 */
 #codeWrapper{
