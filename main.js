@@ -13,7 +13,7 @@ function writeCSS(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 0)
+    }, 20)
 }
 
 function writeMarkdown(prefix, code, fn){
@@ -30,7 +30,7 @@ function writeMarkdown(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 0)
+    }, 10)
 }
 
 function createMarkdown2HTML(fn){
