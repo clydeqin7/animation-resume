@@ -7,7 +7,7 @@ function writeCSS(prefix, code, fn){
     n += 1
     strOld = prefix + code.substring(0, n)
     codeDOM.innerHTML = Prism.highlight(strOld, Prism.languages.css) 
-    codeDOM.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
+    codeDOM.parentNode.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
     codeStyle.innerHTML = strOld
     if(n > code.length){
         window.clearInterval(id)
@@ -30,7 +30,7 @@ function writeMarkdown(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 50)
+    }, 20)
 }
 
 function createMarkdown2HTML(fn){
@@ -72,7 +72,7 @@ html{
 }
 
 #code{
-    border: 1px solid red;
+    border: 1px solid white;
     padding: 16px;
 }
 
@@ -83,13 +83,13 @@ html{
 #code .token.function { color: #DD4A68; }
 
 /* 加点3D效果 */
-#code{
-    transform: rotate(360deg);
-}
 
+#code{
+    animation: breath 2s infinite alternate-reverse;
+}
 /* OK，不玩了接下来正式介绍下自己 */
 /* 准备一张白纸 */
-#code{
+#codeWrapper{
     width: 50%;
     position: fixed;
     height: 100%;
@@ -102,7 +102,7 @@ html{
     height: 100%;
     left: 50%;
     background-color: gray;
-    padding: 8px;
+    padding: 16px;
 }
 
 #content{
@@ -110,7 +110,7 @@ html{
     height: 100%;
     background-color: white;
     padding: 8px;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 /* 请看右边 */
