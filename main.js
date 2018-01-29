@@ -13,28 +13,34 @@ function writeCSS(prefix, code, fn){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 0)
+    }, 50)
 }
 
 function writeMarkdown(prefix, code, fn){
-    console.log(code)
     let codeDOM = document.querySelector("#paper > #content")
     let n = 0
     let strOld = ''
     let id = setInterval(function(){
     n += 1
     strOld = prefix + code.substring(0, n)
-    codeDOM.innerHTML = strOld 
-    // codeDOM.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
+    codeDOM.innerHTML = strOld
+    codeDOM.scrollTop = 10000; // 不是css属性 另codeDOM.scrollHeight
     // codeStyle.innerHTML = strOld
     if(n > code.length){
         window.clearInterval(id)
         fn ** fn.call()
     }
-    }, 0)
+    }, 50)
 }
 
-
+function createMarkdown2HTML(fn){
+    let div = document.createElement('div')
+    div.className = 'html markdown-body'
+    div.innerHTML = marked(mdText)
+    let markdownContainer = document.querySelector('#paper > #content')
+    markdownContainer.replaceWith(div)
+    fn && fn.call()
+}
 
 
 function createPaper(fn){
@@ -104,19 +110,96 @@ html{
     height: 100%;
     background-color: white;
     padding: 8px;
+    overflow: scroll;
 }
+
+/* 请看右边 */
+`
+var markedText = `
+
+/* 接下来使用库 marked.js
+*  把Markdown 变成 HTML
+*/
+`
+var endText =`
+
+
+/* 这就是我的个人简历
+ * 谢谢观看
+ */
 `
 var mdText = `
-# 个人信息
+## 个人信息
 我叫覃琪
-初学前端半年
+初学前端半年  
+
 
 # 作品
+ - [网站导航页](http://clydeqin7.top/webNav/index.html)
+ - 画板
+ - [TODO 苹果风格的轮播]  
+
+
+## 个人博客
+[clyde's blog](http://clydeqin7.top/)  
+
+
+## 联系我
+- QQ: xxxxxxxxx
+- 微信: xxxxxxx
+- e-mail: xxxxxxxxxx
+- tel: xxxxxxxxxxxx  
+
+
+### 模块
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx  
+
+
+### 模块
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx  
+
+
+
+### 模块
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx  
+
+
+
+### 模块
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx
+- 内容xxxxxxxxxxxxxxx  
+
+
 `
 writeCSS('', cssText, ()=>{
     createPaper(()=>{
         writeMarkdown('', mdText, ()=>{
+            writeCSS(cssText, markedText, ()=>{
+                createMarkdown2HTML(()=>{
+                    writeCSS(cssText+markedText, endText, ()=>{
 
+                    })
+                })
+            })
         })
     })
 })
