@@ -17,6 +17,10 @@
     color: black;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 #codeWrapper{
     padding: 16px;
     overflow: scroll;
@@ -25,12 +29,11 @@
 
 #code{
     padding: 16px;
-
+    overflow: hidden;
 }
 
 #paper{
     overflow: hidden;
-
 }
 .html.markdown-body{
     width: 100%;
