@@ -56,7 +56,7 @@ function createPaper(fn){
 var cssText =`
 /*
  * 您好，面试官！
- * 我是覃琪
+ * 我叫覃琪
  * 只用文字介绍太单调了
  * 下面我将用代码来介绍下自己
  */
@@ -131,13 +131,13 @@ var endText =`
 var mdText = `
 ### 个人信息
 我叫覃琪
-初学前端半年  
+自学前端半年  
 
 
 ### 作品
- - [网站导航页](http://clydeqin7.top/webNav/index.html)
+ - [网站导航](http://clydeqin7.top/webNav/index.html)
  - [纯CSS的海绵宝宝](https://github.com/clydeqin7/SpongeBob)  
- - [画板](https://github.com/clydeqin7/hw-canvas)
+ - [轻画板](https://github.com/clydeqin7/hw-canvas)
 
 
 ### 个人博客
@@ -147,8 +147,8 @@ var mdText = `
 [clydeqin7-GitHub](https://github.com/clydeqin7)
 
 ## 联系我
-- QQ: 867102610
-- 微信/电话: 18883192700
+- QQ: xxxxxxxxx
+- 微信/电话: xxxxxxxxxx
 - e-mail: xxxxxxxxxx
 - tel: xxxxxxxxxxxx  
 
